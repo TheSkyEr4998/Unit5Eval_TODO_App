@@ -63,6 +63,14 @@ async function taskManager(){
 
             let td1=document.createElement('td');
             td1.textContent = task.title;
+            td1.style=function(){
+                if (taskstatus == true){
+                    color:green;
+                }
+                else{
+                    color:red;
+                }
+            }
 
             let td2=document.createElement('td');
             let dltbtn=document.createElement('button');
@@ -82,6 +90,7 @@ async function taskManager(){
             edtbtn.onclick= async function(){
                 console.log(task.id)
                 localStorage.setItem('taskID',task.id)
+                window.location.href="./edit.html"
             }
 
             td3.append(edtbtn)
@@ -97,6 +106,5 @@ async function taskManager(){
     } catch (error) {
         console.log(error);
     }
-    
 }
-taskManager()
+taskManager();
