@@ -2,11 +2,16 @@ let container = document.getElementById("container")
 
 async function createTaskFn(){
     try {
-        let title = document.getElementById('task').value;
-        let status = document.getElementById('check').value;
+        let taskName = document.getElementById('task').value;
+        let taskstatus;
+        if( document.querySelector("#check").checked){
+            taskstatus=true;
+        }else{
+            taskstatus=false;
+        }
         let body={
-            title,
-            status
+            "title":taskName,
+            "status":taskstatus
         };
 
         let  res = await fetch(`http://localhost:3000/tasks`,{

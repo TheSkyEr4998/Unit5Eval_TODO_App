@@ -6,13 +6,13 @@
       "status": "false"
     },
     {
-      "title": "buy milk",
-      "status": "on",
+      "title": "buy car",
+      "status": false,
       "id": 2
     },
     {
-      "title": "buy car",
-      "status": "on",
+      "title": "buy phone",
+      "status": true,
       "id": 3
     }
   ]

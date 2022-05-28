@@ -7,7 +7,10 @@ const updateFormInputs = async () =>{
         const {id,title,status} = data;
 
         document.getElementById('task').value = title;
-        document.getElementById('check').value = status;
+        if(status===true){
+            document.querySelector("#check").checked=true;
+        }
+        
     } catch (error) {
         console.log(error)
     }
@@ -16,10 +19,15 @@ updateFormInputs();
 
 const editTaskFn = async ()=>{
     try {
-
+        let taskStatus;
+            if(document.querySelector("#check").checked){
+                taskStatus=true;
+            }else{
+                taskStatus=false;
+            }
         let body={
             title:document.getElementById('task').value,
-            status:document.getElementById('check').value
+            status:taskStatus
         };
 
         let res = await fetch(`http://localhost:3000/tasks/${taskID}`,{
@@ -29,7 +37,7 @@ const editTaskFn = async ()=>{
                 "Content-Type":"application/json"
             }
         });
-        location.href = "./HTML/index.html"
+        location.href = "./index.html"
     } catch (error) {
         console.log(error)
     }
